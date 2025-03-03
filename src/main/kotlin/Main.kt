@@ -6,8 +6,7 @@ import kotlin.random.Random
 
 fun main() = runBlocking {
     val orderBook = OrderBook()
-
-    // Coroutine for order matching
+    
     val matchingJob = launch {
         while (isActive) {
             orderBook.matchOrders()
@@ -15,7 +14,6 @@ fun main() = runBlocking {
         }
     }
 
-    // Coroutines for adding buy and sell orders
     val buyOrderJob = launch {
         while (isActive) {
             val price = BigDecimal(Random.nextDouble(90.0, 110.0).toString())
